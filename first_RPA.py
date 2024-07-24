@@ -5,7 +5,7 @@ def on_button_click():
     url = 'https://g1.globo.com/'
     response = requests.get(url)
     if response.status_code == 200:
-        html_content = response.
+        html_content = response.text
         label = tk.Label(root, text=html_content)
         label.pack()
     else:
