@@ -96,7 +96,7 @@ def fill_in_excel(url, views_number, comments_number, current_datetime):
     #ws.title = "YouTube_Data"
 
     # Carregando a planilha existente
-    wb = load_workbook("C:/Users/vitor/Documents/Estudos_RPA/estudos_RPA/data.xlsx")
+    wb = load_workbook("C:/Users/vitor/Documents/Estudos_RPA/estudos_RPA/data.xlsm", keep_vba=True)
     ws = wb['YouTube_Data']  
 
     # Escrevendo os cabeçalhos
@@ -106,6 +106,22 @@ def fill_in_excel(url, views_number, comments_number, current_datetime):
     ws.append([url, views_number, comments_number, current_datetime])
     
     # Salvando a planilha com os novos dados
-    wb.save("C:/Users/vitor/Documents/Estudos_RPA/estudos_RPA/data.xlsx")
+    wb.save("C:/Users/vitor/Documents/Estudos_RPA/estudos_RPA/data.xlsm")
+
+    update_excel()
+
+def update_excel():
+    pyto.PAUSE = 5
+    pyto.press('Win')
+    pyto.write('estudos_RPA')
+    pyto.press('Enter')
+    pyto.press('d')
+    pyto.press('Enter')
+    pyto.hotkey('Alt', 'F4')
+    pyto.press('Enter')
+
+    
+    
+
 
 get_data_from_url()
