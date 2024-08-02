@@ -21,24 +21,12 @@ def get_data_from_url():
     driver = webdriver.Chrome(service=service, options=chrome_options)
 
     # URL do vídeo do YouTube
-    url = 'https://www.youtube.com/watch?v=HQ2VYbedE1g' 
+    url = 'https://www.youtube.com/watch?v=e4Yt-UlsJG4' 
+
      
     # Abrir a página do vídeo
     driver.get(url)
     driver.maximize_window()
-
-    try:
-        # Espera explícita para o elemento estar presente e visível
-        views_element = WebDriverWait(driver, 60).until(
-            EC.visibility_of_element_located((By.XPATH, '/html/body/ytd-app/div[1]/ytd-page-manager/ytd-watch-flexy/div[5]/div[1]/div/div[2]/ytd-watch-metadata/div/div[4]/div[1]/div/ytd-watch-info-text/div/yt-formatted-string/span[1]'))
-        )
-    
-        # Obter o texto das visualizações e comentários
-        views = views_element.text
-        #print(f"O vídeo tem {views}.")
-
-    except Exception as e:
-        print(f"Erro ao encontrar o elemento: {e}")
 
     pyto.PAUSE = 7
 
@@ -52,11 +40,24 @@ def get_data_from_url():
     # Move o mouse para o centro da tela
     pyto.moveTo(center_x, center_y)
 
-   
     #scroll down para visualizar comentários
     pyto.vscroll(-500) 
     # Clique no centro da tela para capturar as visualizações detalhadas
     pyto.click()
+
+    try:
+        # Espera explícita para o elemento estar presente e visível
+        views_element = WebDriverWait(driver, 60).until(
+            EC.visibility_of_element_located((By.XPATH, "/html/body/ytd-app/div[1]/ytd-page-manager/ytd-watch-flexy/div[5]/div[1]/div/div[2]/ytd-watch-metadata/div/div[4]/div[1]/div/ytd-watch-info-text/div/yt-formatted-string/span[1]"))
+        )
+    
+        # Obter o texto das visualizações e comentários
+        views = views_element.text
+        #print(f"O vídeo tem {views}.")
+
+    except Exception as e:
+        print(f"Erro ao encontrar o elemento: {e}")
+
 
     try:
         # Espera explícita para o elemento estar presente e visível
@@ -119,9 +120,6 @@ def update_excel():
     pyto.press('Enter')
     pyto.hotkey('Alt', 'F4')
     pyto.press('Enter')
-
-    
-    
 
 
 get_data_from_url()
