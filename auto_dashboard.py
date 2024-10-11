@@ -42,6 +42,7 @@ def get_data_from_url():
 
     #scroll down para visualizar comentários
     pyto.vscroll(-500) 
+    
     # Clique no centro da tela para capturar as visualizações detalhadas
     pyto.click()
 
