@@ -1,1 +1,2 @@
-Python não encontrado; execute sem argumentos para instalar na Microsoft Store ou desabilite este atalho a partir de Configurações > Gerenciar Aliases de Execução do Aplicativo.
+'python' nÆo ‚ reconhecido como um comando interno
+ou externo, um programa oper vel ou um arquivo em lotes.
